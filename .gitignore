@@ -1,0 +1,9 @@
+ignore everything
+*
+
+# Allow specific files
+!main.cpp
+!Single_linked_list.h
+!Single_linked_list_impl.hpp
+!README.md
+!.gitignore
