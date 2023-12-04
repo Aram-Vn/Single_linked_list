@@ -7,6 +7,11 @@ int main(){
     my_list.push_back(1);
     my_list.push_back(2);
     my_list.push_back(3);
+    my_list.push_back(3);
+    my_list.push_back(3);
+    my_list.push_back(3);
+    my_list.push_back(4);
+    my_list.push_back(99);
 
 	std::cout << my_list.front() << std::endl;
 	std::cout << my_list.back() << std::endl;

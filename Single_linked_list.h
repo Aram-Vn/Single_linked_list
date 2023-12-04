@@ -28,7 +28,7 @@ namespace my {
 		{
 		public:
 			Node(T val, Node* node_ptr);
-			~Node();			
+			~Node() = default;			
 
 		public:
 			T m_val;
