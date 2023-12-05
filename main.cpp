@@ -2,16 +2,7 @@
 #include "Single_linked_list.h"
 
 int main(){
- my::Forward_list<int> my_list;
-
-    my_list.push_back(1);
-    my_list.push_back(2);
-    my_list.push_back(3);
-    my_list.push_back(4);
-    my_list.push_back(5);
-    my_list.push_back(6);
-    my_list.push_back(7);
-    my_list.push_back(8);
+ my::Forward_list<int> my_list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
  
     my_list.insert(8, 99);
     my_list.insert(1, 99);

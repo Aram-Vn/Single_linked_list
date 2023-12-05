@@ -11,27 +11,23 @@ my::Forward_list<T>::~Forward_list()
 	}
 }
 
-template <class T>
-my::Forward_list<T>::Forward_list(const Forward_list& other) 
+template <typename T>
+my::Forward_list<T>::Forward_list(const Forward_list& other)
 {
-    this->m_head = nullptr;
+    if (!other.m_head) {
+    	return;
+	}
 
-    Node* otherCurrent = other.m_head;
-    Node* newCurrent = nullptr;
+    auto* current = other.m_head;
+    m_head = new Node(current->m_val, nullptr);
+    auto* this_current = m_head;
 
-    while (otherCurrent) {
-        Node* newNode = new Node(otherCurrent->m_val, nullptr);
+   	while (current) {
 
-        if (!this->m_head) {
-            this->m_head = newNode;
-            newCurrent = this->m_head;
-        } else {
-            newCurrent->m_next = newNode;
-            newCurrent = newCurrent->m_next;
-        }
-
-        otherCurrent = otherCurrent->m_next;
-    }
+        this_current->m_next = new Node(current->m_val, nullptr);
+        current = current->m_next;
+    	this_current = this_current->m_next;
+	}
 }
 
 template <class T>
@@ -46,6 +42,15 @@ my::Forward_list<T>::Node::Node(T val, Node* node_ptr) :
 	m_val{val},
 	m_next{node_ptr}
 {}
+
+template <class T> 
+my::Forward_list<T>::Forward_list(std::initializer_list<T> init_list) 
+{
+	for (const auto& elem : init_list) {
+		this->push_back(elem);
+    }
+}
+
 
 template <class T> 
 my::Forward_list<T>& my::Forward_list<T>::operator=(const Forward_list& other)
