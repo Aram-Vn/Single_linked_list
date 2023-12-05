@@ -12,9 +12,9 @@ my::Forward_list<T>::~Forward_list()
 }
 
 template <class T>
-my::Forward_list<T>::Forward_list(const Forward_list& other)
+my::Forward_list<T>::Forward_list(const Forward_list& other) 
 {
-    m_head = nullptr;
+    this->m_head = nullptr;
 
     Node* otherCurrent = other.m_head;
     Node* newCurrent = nullptr;
@@ -22,9 +22,9 @@ my::Forward_list<T>::Forward_list(const Forward_list& other)
     while (otherCurrent) {
         Node* newNode = new Node(otherCurrent->m_val, nullptr);
 
-        if (!m_head) {
-            m_head = newNode;
-            newCurrent = m_head;
+        if (!this->m_head) {
+            this->m_head = newNode;
+            newCurrent = this->m_head;
         } else {
             newCurrent->m_next = newNode;
             newCurrent = newCurrent->m_next;
