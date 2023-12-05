@@ -7,29 +7,35 @@ namespace my {
 	{
 	public:
 		~Forward_list(); //
+
+		//Constructor
 		Forward_list() = default; //
 		Forward_list(const Forward_list& other); //
 		Forward_list(Forward_list&& other) noexcept; //	
 	
+		//Opreators
 		Forward_list& operator=(const Forward_list& other); //
 		Forward_list& operator=(Forward_list&& other) noexcept; //	
 
 	public:
-		void push_front(int data); //
-		void push_back(int data); //
-		void pop_front(); //
-		void pop_back(); //
-		void insert(int index, const T& value); //
-
-
+		//Element access
 		T front() const; //
 		T back() const; // 
+	
+		//Capacity
 		bool empty() const; //
 		size_t size() const; //
-		
+
+		//Modifiers
 		void clear(); //
+		void insert(int index, const T& value); //
+		void push_back(int data); //
+		void pop_back(); //
+		void push_front(int data); //
+		void pop_front(); //
 		void swap(Forward_list& other); //
 
+		//Operations
 		void print(); 
 
 	private:
