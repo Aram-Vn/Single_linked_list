@@ -13,7 +13,10 @@ int main(){
     my_list.push_back(7);
     my_list.push_back(8);
 
-	my_list.insert(4, 999);
+	my_list.print();
+	my_list.erase(0);
+	my_list.print();
+	my_list.erase(6);	
 
 	my_list.print();
 

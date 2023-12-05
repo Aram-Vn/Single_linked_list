@@ -179,6 +179,42 @@ void my::Forward_list<T>::insert(int index, const T& value)
 	exit(0);
 }
 
+template <class T>
+void my::Forward_list<T>::erase(int index)
+{
+   if (index < 0) {
+        std::cout << "In erase\nIndex must be >= 0" << std::endl;
+        exit(0);
+    }
+
+    if (index == 0) {
+        if (m_head) {
+            Node* tmp_ptr = m_head;
+            m_head = m_head->m_next;
+            delete tmp_ptr;
+        }
+        return;
+    }
+
+  	int count = 0;	
+	Node* current = m_head;
+	
+	while (current->m_next) {
+        current = current->m_next;
+		++count;
+			if (count == index - 1) {
+				Node* tmp_ptr = current->m_next->m_next;
+				delete current->m_next;
+				
+				current->m_next = tmp_ptr;	
+				return;
+			}
+    }
+
+	std::cout << "in insert\nthere is no such index" << std::endl;
+	exit(0); 
+}
+ 
 template <class T> 
 T my::Forward_list<T>::front() const
 {

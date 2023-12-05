@@ -29,6 +29,7 @@ namespace my {
 		//Modifiers
 		void clear(); //
 		void insert(int index, const T& value); //
+		void erase(int index); 
 		void push_back(int data); //
 		void pop_back(); //
 		void push_front(int data); //
