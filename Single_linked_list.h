@@ -9,13 +9,18 @@ namespace my {
 		~Forward_list(); //
 		Forward_list() = default; //
 		Forward_list(const Forward_list& other); //
-		Forward_list(Forward_list&& other); //	
+		Forward_list(Forward_list&& other) noexcept; //	
+	
+		Forward_list& operator=(const Forward_list& other); //
+		Forward_list& operator=(Forward_list&& other) noexcept; //	
 
 	public:
 		void push_front(int data); //
 		void push_back(int data); //
 		void pop_front(); //
 		void pop_back(); //
+		void insert(int index, const T& value); //
+
 
 		T front() const; //
 		T back() const; // 
@@ -24,6 +29,8 @@ namespace my {
 		
 		void clear(); //
 		void swap(Forward_list& other); //
+
+		void print(); 
 
 	private:
 		struct Node

@@ -35,7 +35,7 @@ my::Forward_list<T>::Forward_list(const Forward_list& other)
 }
 
 template <class T>
-my::Forward_list<T>::Forward_list(Forward_list&& other) :
+my::Forward_list<T>::Forward_list(Forward_list&& other) noexcept :
 	m_head{other.m_head}
 {
 	other.m_head = nullptr;
@@ -46,6 +46,46 @@ my::Forward_list<T>::Node::Node(T val, Node* node_ptr) :
 	m_val{val},
 	m_next{node_ptr}
 {}
+
+template <class T> 
+my::Forward_list<T>& my::Forward_list<T>::operator=(const Forward_list& other)
+{	
+	if (this != &other) {
+    	clear();
+
+        Node* otherCurrent = other.m_head;
+        Node* newCurrent = nullptr;
+
+        while (otherCurrent) {
+            Node* newNode = new Node(otherCurrent->m_val, nullptr);
+
+            if (!m_head) {
+                m_head = newNode;
+                newCurrent = m_head;
+            } else {
+                newCurrent->m_next = newNode;
+                newCurrent = newCurrent->m_next;
+            }
+
+            otherCurrent = otherCurrent->m_next;
+        }
+    }
+
+    return *this;
+}
+
+template <class T> 
+my::Forward_list<T>& my::Forward_list<T>::operator=(Forward_list&& other) noexcept
+{
+	if (this != &other) { 
+        clear();
+
+        m_head = other.m_head;
+        other.m_head = nullptr;
+    }
+
+	return *this;
+}
 
 template <class T>
 void my::Forward_list<T>::push_front(int data)
@@ -106,6 +146,37 @@ void my::Forward_list<T>::pop_back()
 
 	delete current->m_next;
 	current->m_next = nullptr;
+}
+
+template <class T>  
+void my::Forward_list<T>::insert(int index, const T& value)
+{
+	if(index < 0){
+		std::cout << "in insert\nfirst argument must be >= 0" << std::endl;
+	}
+
+	if (index == 0) {
+        Node* new_node = new Node(value, m_head);
+        m_head = new_node;
+        return;
+    }
+
+	
+	int count = 0;	
+	Node* current = m_head;
+	
+	while (current->m_next) {
+        current = current->m_next;
+		++count;
+			if (count == index - 1) {
+				Node* new_node = new Node(value, current->m_next);
+        		current->m_next = new_node;
+				return;
+			}
+    }
+
+	std::cout << "in insert\nthere is no such index" << std::endl;
+	exit(0);
 }
 
 template <class T> 
@@ -178,6 +249,19 @@ template <class T>
 void my::Forward_list<T>::swap(Forward_list& other)
 {
 	std::swap(this->m_head, other.m_head);	
+}
+
+template <class T> 
+void my::Forward_list<T>::print()
+{
+	Node* current = m_head;
+
+	while (current->m_next) {
+		std::cout << current->m_val << " ";
+        current = current->m_next;
+   	}
+	std::cout << current->m_val << " ";
+	std::cout << std::endl;
 }
 
 #endif // SINGLE_LINKED_LIST_H
