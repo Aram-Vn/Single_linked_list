@@ -6,6 +6,7 @@ namespace my {
 	class Forward_list
 	{
 	public:
+		//destructor
 		~Forward_list(); //
 
 		//Constructor
@@ -38,7 +39,8 @@ namespace my {
 		void swap(Forward_list& other); //
 
 		//Operations
-		void print(); 
+		void print(); //
+		void reverse();  
 
 	private:
 		struct Node

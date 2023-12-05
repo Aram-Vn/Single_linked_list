@@ -18,12 +18,12 @@ my::Forward_list<T>::Forward_list(const Forward_list& other)
     	return;
 	}
 
-    auto* current = other.m_head;
-    m_head = new Node(current->m_val, nullptr);
-    auto* this_current = m_head;
+    Node* current = other.m_head;
+    this->m_head = new Node(current->m_val, nullptr);
+    Node* this_current = this->m_head;
+	current = current->m_next;
 
    	while (current) {
-
         this_current->m_next = new Node(current->m_val, nullptr);
         current = current->m_next;
     	this_current = this_current->m_next;
@@ -303,6 +303,34 @@ void my::Forward_list<T>::print()
    	}
 	std::cout << current->m_val << " ";
 	std::cout << std::endl;
+}
+
+template <class T>
+void my::Forward_list<T>::reverse()
+{
+	Node* current = m_head;
+
+	const int SIZE = this->size();
+	T arr[SIZE];	
+	int i = 0;
+
+	while (current->m_next) {
+		arr[i] = current->m_val;
+		++i;	
+    	current = current->m_next;
+    } 
+	arr[i] = current->m_val;
+	
+	current = m_head;
+
+	while (this->m_head) { 
+		this->m_head->m_val = arr[i];
+		--i;
+		this->m_head = this->m_head->m_next;	
+	}
+
+	this->m_head = current;
+	this->m_head->m_val = arr[SIZE - 1];
 }
 
 #endif // SINGLE_LINKED_LIST_H
