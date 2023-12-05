@@ -148,73 +148,73 @@ void my::Forward_list<T>::pop_back()
 	current->m_next = nullptr;
 }
 
-template <class T>  
-void my::Forward_list<T>::insert(int index, const T& value)
-{
-	if(index < 0){
-		std::cout << "in insert\nfirst argument must be >= 0" << std::endl;
-	}
+template <class T>
+void my::Forward_list<T>::insert(int pos, const T& value) {
+    if (pos < 0) {
+        std::cout << "In insert\nFirst argument must be >= 0" << std::endl;
+        exit(0);
+    }
 
-	if (index == 0) {
+    if (pos == 0) {
         Node* new_node = new Node(value, m_head);
         m_head = new_node;
         return;
     }
 
-	
-	int count = 0;	
-	Node* current = m_head;
-	
-	while (current->m_next) {
+    int count = 0;
+    Node* current = m_head;
+
+    while (current->m_next && count < pos - 1) {
         current = current->m_next;
-		++count;
-			if (count == index - 1) {
-				Node* new_node = new Node(value, current->m_next);
-        		current->m_next = new_node;
-				return;
-			}
+        ++count;
     }
 
-	std::cout << "in insert\nthere is no such index" << std::endl;
-	exit(0);
+    if (count == pos - 1) {
+        Node* new_node = new Node(value, current->m_next);
+        current->m_next = new_node;
+    } else {
+        std::cout << "In insert\nThere is no such index" << std::endl;
+        exit(0);
+    }
 }
 
 template <class T>
-void my::Forward_list<T>::erase(int index)
-{
-   if (index < 0) {
+void my::Forward_list<T>::erase(int index) {
+    if (index < 0) {
         std::cout << "In erase\nIndex must be >= 0" << std::endl;
         exit(0);
     }
 
     if (index == 0) {
         if (m_head) {
-            Node* tmp_ptr = m_head;
+            Node* temp = m_head;
             m_head = m_head->m_next;
-            delete tmp_ptr;
+            delete temp;
         }
         return;
     }
 
-  	int count = 0;	
-	Node* current = m_head;
-	
-	while (current->m_next) {
+    int count = 0;
+    Node* current = m_head;
+    Node* previous = nullptr;
+
+    while (current && count < index) {
+        previous = current;
         current = current->m_next;
-		++count;
-			if (count == index - 1) {
-				Node* tmp_ptr = current->m_next->m_next;
-				delete current->m_next;
-				
-				current->m_next = tmp_ptr;	
-				return;
-			}
+        ++count;
     }
 
-	std::cout << "in insert\nthere is no such index" << std::endl;
-	exit(0); 
+    if (count == index && current) {
+        if (previous) {
+            previous->m_next = current->m_next;
+            delete current;
+        }
+    } else {
+        std::cout << "In erase\nIndex is out of bounds" << std::endl;
+		exit(0);
+	}
 }
- 
+
 template <class T> 
 T my::Forward_list<T>::front() const
 {

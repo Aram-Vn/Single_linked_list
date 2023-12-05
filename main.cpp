@@ -12,11 +12,17 @@ int main(){
     my_list.push_back(6);
     my_list.push_back(7);
     my_list.push_back(8);
+ 
+    my_list.insert(8, 99);
+    my_list.insert(1, 99);
+    my_list.insert(0, 88);
 
 	my_list.print();
-	my_list.erase(0);
+	my_list.erase(1);
+
 	my_list.print();
-	my_list.erase(6);	
+
+	my_list.erase(0);
 
 	my_list.print();
 
