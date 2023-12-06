@@ -10,7 +10,7 @@ namespace my {
 		~Forward_list(); //
 
 		//Constructor
-		Forward_list() = default; //
+		Forward_list(); //
 		Forward_list(const Forward_list& other); //
 		Forward_list(Forward_list&& other) noexcept; //	
 		Forward_list(std::initializer_list<T> init_list); //

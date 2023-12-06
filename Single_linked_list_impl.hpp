@@ -1,6 +1,11 @@
 #ifndef SINGLE_LINKED_LIST_IMPL_HPP
 #define SINGLE_LINKED_LIST_IMPL_HPP
 
+
+template <class T>
+my::Forward_list<T>::Forward_list() :
+	m_head(nullptr)
+{}
 template <class T>
 my::Forward_list<T>::~Forward_list()
 {
@@ -44,7 +49,8 @@ my::Forward_list<T>::Node::Node(T val, Node* node_ptr) :
 {}
 
 template <class T> 
-my::Forward_list<T>::Forward_list(std::initializer_list<T> init_list) 
+my::Forward_list<T>::Forward_list(std::initializer_list<T> init_list) :
+	m_head(nullptr) 
 {
 	for (const auto& elem : init_list) {
 		this->push_back(elem);
