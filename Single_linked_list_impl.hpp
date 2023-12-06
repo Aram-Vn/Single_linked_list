@@ -284,12 +284,39 @@ void my::Forward_list<T>::clear()
 		m_head = m_head->m_next;
 		delete temp;
 	}
+	m_head = nullptr;
 }
 
 template <class T> 
 void my::Forward_list<T>::swap(Forward_list& other)
 {
 	std::swap(this->m_head, other.m_head);	
+}
+
+template <class T> 
+void my::Forward_list<T>::assign(int count, const T& value)
+{
+	if (count < 0) {
+		std::cout << "in void assign(int count, const T& value)" << std::endl;
+		std::cout << "count must be >= 0" << std::endl;
+		exit(0);
+	}
+
+	this->clear();
+	
+	for	(int i = 0; i < count; ++i) {
+		this->push_back(value);
+	} 
+}
+
+template <class T>   
+void my::Forward_list<T>::assign(const std::initializer_list<T>& init_list)
+{
+	this->clear(); 
+
+	for (const T& elem : init_list) {
+		this->push_back(elem);
+    }
 }
 
 template <class T> 

@@ -37,10 +37,12 @@ namespace my {
 		void push_front(int data); //
 		void pop_front(); //
 		void swap(Forward_list& other); //
+		void assign(int count, const T& value);
+		void assign(const std::initializer_list<T>& init_list);
 
 		//Operations
 		void print(); //
-		void reverse();  
+		void reverse(); // 
 
 	private:
 		struct Node
