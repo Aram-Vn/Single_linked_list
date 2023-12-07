@@ -5,7 +5,7 @@
 - [Overview](#Overview)
 - [Features (Public Member Functions)](#Features)
 - [Usage](#Usage)
-- [function usege examples](#function usege examples)
+- [function usege examples](#function-usege-examples)
 ---
 
 ## Overview
