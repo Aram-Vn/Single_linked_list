@@ -179,4 +179,105 @@ intList.print(); // Output: 1 2 3
 my::Forward_list<int> emptyList;
 bool isEmpty = emptyList.empty(); // isEmpty will be true
 ```
+---
 
+## Size
+```cpp
+// Size
+my::Forward_list<int> intList = {1, 2, 3};
+size_t listSize = intList.size(); // listSize will be 3
+```
+---
+
+# Modifiers
+
+## Clear
+```cpp
+// Clear
+my::Forward_list<int> intList = {1, 2, 3};
+intList.clear(); // intList is now an empty list
+```
+---
+
+## Insert
+```cpp
+// Insert
+my::Forward_list<int> intList = {1, 2, 3};
+intList.insert(1, 10); // Insert 10 at index 1, resulting in: 1 10 2 3
+```
+---
+
+## Erase
+```cpp
+// Erase
+my::Forward_list<int> intList = {1, 2, 3};
+intList.erase(1); // Erase element at index 1, resulting in: 1 3
+```
+---
+
+## Push Back
+```cpp
+// Push Back
+my::Forward_list<int> intList = {1, 2, 3};
+intList.push_back(4); // Add 4 to the end, resulting in: 1 2 3 4
+```
+---
+
+## Pop Back
+```cpp
+// Pop Back
+my::Forward_list<int> intList = {1, 2, 3};
+intList.pop_back(); // Remove the last element, resulting in: 1 2
+```
+---
+
+## Push Front
+```cpp
+// Push Front
+my::Forward_list<int> intList = {1, 2, 3};
+intList.push_front(0); // Add 0 to the beginning, resulting in: 0 1 2 3
+```
+---
+
+## Pop Front
+```cpp
+// Pop Front
+my::Forward_list<int> intList = {1, 2, 3};
+intList.pop_front(); // Remove the first element, resulting in: 2 3
+```
+---
+
+## Swap
+```cpp
+// Swap
+my::Forward_list<int> list1 = {1, 2, 3};
+my::Forward_list<int> list2 = {4, 5, 6};
+
+list1.swap(list2); // list1 becomes {4, 5, 6}, list2 becomes {1, 2, 3}
+```
+---
+
+## Assign (Count)
+```cpp
+// Assign (Count)
+my::Forward_list<int> intList = {1, 2, 3};
+intList.assign(4, 0); // Assign 0 to 4 elements, resulting in: 0 0 0 0
+```
+---
+
+## Assign (Initializer List)
+```cpp
+// Assign (Initializer List)
+my::Forward_list<int> intList = {1, 2, 3};
+intList.assign({4, 5, 6}); // Assign elements from initializer list, resulting in: 4 5 6
+```
+---
+
+# Operations
+
+## Reverse
+```cpp
+// Reverse
+my::Forward_list<int> intList = {1, 2, 3};
+intList.reverse(); // Reverses the list, resulting in: 3 2 1
+```
