@@ -3,6 +3,8 @@
 ---
 ## Table of Contents
 - [Overview](#Overview)
+- [Features (Public Member Functions)](#Features)
+- [Usage](#Usage)
 ---
 
 ## Overview
