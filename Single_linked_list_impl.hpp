@@ -338,6 +338,7 @@ void my::Forward_list<T>::print()
 	std::cout << std::endl;
 }
 
+/*
 template <class T>
 void my::Forward_list<T>::reverse()
 {
@@ -364,6 +365,28 @@ void my::Forward_list<T>::reverse()
 
 	this->m_head = current;
 	this->m_head->m_val = arr[SIZE - 1];
+}
+*/
+
+template <class T>
+void my::Forward_list<T>::reverse() {
+    if (!m_head || !m_head->m_next) {
+        // If the list is empty or has only one element, no need to reverse
+        return;
+    }
+
+    Node* prev = nullptr;
+    Node* current = m_head;
+    Node* next = nullptr;
+
+    while (current) {
+        next = current->m_next;
+        current->m_next = prev;
+        prev = current;
+        current = next;
+    }
+
+    m_head = prev;
 }
 
 #endif // SINGLE_LINKED_LIST_H
