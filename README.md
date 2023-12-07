@@ -71,8 +71,10 @@ g++ -o <your_program_name> main.cpp
 
 ---
 
-## function usege examples 
+# function usege examples 
 Once the forward list is integrated into your project, you can use the provided functions to work with the forward list.
+
+## Constructors and Destructors
 
 ### Default Constructor
 ```cpp
@@ -90,3 +92,91 @@ originalList.push_back(2);
 
 my::Forward_list<int> copiedList(originalList);
 ```
+---
+
+### Move Constructor
+```cpp
+// Move Constructor
+my::Forward_list<int> sourceList;
+sourceList.push_back(1);
+sourceList.push_back(2);
+
+my::Forward_list<int> destinationList(std::move(sourceList));
+```
+---
+
+### Initializer List Constructor
+```cpp
+// Initializer List Constructor
+my::Forward_list<int> initializedList = {1, 2, 3, 4, 5};
+```
+---
+
+### Destructor
+```cpp
+// Destructor
+// Automatically called when the list goes out of scope
+```
+---
+
+## Operators
+
+### Copy Assignment Operator
+```cpp
+// Copy Assignment Operator
+my::Forward_list<int> originalList;
+originalList.push_back(1);
+originalList.push_back(2);
+
+my::Forward_list<int> assignedList;
+assignedList = originalList;
+```
+---
+
+## Move Assignment Operator
+```cpp
+// Move Assignment Operator
+my::Forward_list<int> sourceList;
+sourceList.push_back(1);
+sourceList.push_back(2);
+
+my::Forward_list<int> destinationList;
+destinationList = std::move(sourceList);
+```
+---
+
+# Element Access
+
+## Front
+```cpp
+// Front
+my::Forward_list<int> intList = {1, 2, 3};
+int frontElement = intList.front(); // frontElement will be 1
+```
+---
+
+## Back
+```cpp
+// Back
+my::Forward_list<int> intList = {1, 2, 3};
+int backElement = intList.back(); // backElement will be 3
+```
+---
+
+## Print
+```cpp
+// Print
+my::Forward_list<int> intList = {1, 2, 3};
+intList.print(); // Output: 1 2 3
+```
+---
+
+# Capacity
+
+## Empty
+```cpp
+// Empty
+my::Forward_list<int> emptyList;
+bool isEmpty = emptyList.empty(); // isEmpty will be true
+```
+
