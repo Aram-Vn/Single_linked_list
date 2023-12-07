@@ -80,7 +80,7 @@ g++ -o <your_program_name> main.cpp
 # function usege examples 
 Once the forward list is integrated into your project, you can use the provided functions to work with the forward list.
 
-- [Constructors and Destructors](#Constructors-and-examples)
+- [Constructors and Destructors](#constructors-and-destructors-examples)
 - [Operators](#Operators-examples)
 - [Element Access](#Element-Access-examples)
 - [Capacity](#Capacity-examples)
