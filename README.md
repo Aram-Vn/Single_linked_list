@@ -131,9 +131,12 @@ my::Forward_list<int> initializedList = {1, 2, 3, 4, 5};
 my::Forward_list<int> originalList;
 originalList.push_back(1);
 originalList.push_back(2);
+// sourceList 1, 2
 
 my::Forward_list<int> assignedList;
 assignedList = originalList;
+// sourceList 1, 2
+// destinationList 1, 2
 ```
 
 ## Move Assignment Operator
@@ -146,7 +149,7 @@ sourceList.push_back(2);
 
 my::Forward_list<int> destinationList;
 destinationList = std::move(sourceList);
-// sourceList 1, 2
+// sourceList empty( nullptr )
 // destinationList 1, 2
 ```
 ---
