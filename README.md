@@ -80,11 +80,13 @@ g++ -o <your_program_name> main.cpp
 # function usege examples 
 Once the forward list is integrated into your project, you can use the provided functions to work with the forward list.
 
-- [Constructors and Destructors](#Constructors-and-usege-examples)
-- [Operators](#Operators-usege-examples)
-- [Element Access](#Element-Access-usege-examples)
+- [Constructors and Destructors](#Constructors-and-examples)
+- [Operators](#Operators-examples)
+- [Element Access](#Element-Access-examples)
+- [Capacity](#Capacity-examples)
+- [Modifiers](#Modifiers_examples)
 
-## Constructors and Destructors usege examples
+## Constructors and Destructors examples
 
 ### Default Constructor
 ```cpp
@@ -133,7 +135,7 @@ my::Forward_list<int> initializedList = {1, 2, 3, 4, 5};
 // Automatically called when the list goes out of scope
 ```
 
-## Operators usege examples 
+## Operators examples 
 
 ### Copy Assignment Operator
 ```cpp
@@ -164,7 +166,7 @@ destinationList = std::move(sourceList);
 ```
 ---
 
-# Element Access usege examples 
+# Element Access examples 
 
 ## Front
 ```cpp
@@ -188,7 +190,7 @@ intList.print(); // Output: 1 2 3
 ```
 ---
 
-# Capacity
+# Capacity examples
 
 ## Empty
 ```cpp
@@ -205,7 +207,7 @@ size_t listSize = intList.size(); // listSize will be 3
 ```
 ---
 
-# Modifiers
+# Modifiers examples
 
 ## Clear
 ```cpp
