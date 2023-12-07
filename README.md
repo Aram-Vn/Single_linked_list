@@ -91,6 +91,7 @@ originalList.push_back(2);
 // originalList 1 , 2
 
 my::Forward_list<int> copiedList(originalList);
+
 // originalList 1 , 2
 // copiedList 1, 2
 ```
@@ -103,12 +104,17 @@ sourceList.push_back(1);
 sourceList.push_back(2);
 
 my::Forward_list<int> destinationList(std::move(sourceList));
+
+// sourceList empty( nullptr );
+// destinationList 1 , 2;
 ```
 
 ### Initializer List Constructor
 ```cpp
 // Initializer List Constructor
 my::Forward_list<int> initializedList = {1, 2, 3, 4, 5};
+
+// initializedList 1, 2, 3, 4, 5
 ```
 
 ### Destructor
