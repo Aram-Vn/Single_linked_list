@@ -88,8 +88,11 @@ my::Forward_list<int> intList;
 my::Forward_list<int> originalList;
 originalList.push_back(1);
 originalList.push_back(2);
+// originalList 1 , 2
 
 my::Forward_list<int> copiedList(originalList);
+// originalList 1 , 2
+// copiedList 1, 2
 ```
 
 ### Move Constructor
