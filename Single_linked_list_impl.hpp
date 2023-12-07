@@ -338,40 +338,9 @@ void my::Forward_list<T>::print()
 	std::cout << std::endl;
 }
 
-/*
-template <class T>
-void my::Forward_list<T>::reverse()
-{
-	Node* current = m_head;
-
-	const int SIZE = this->size();
-	T arr[SIZE];	
-	int i = 0;
-
-	while (current->m_next) {
-		arr[i] = current->m_val;
-		++i;	
-    	current = current->m_next;
-    } 
-	arr[i] = current->m_val;
-	
-	current = m_head;
-
-	while (this->m_head) { 
-		this->m_head->m_val = arr[i];
-		--i;
-		this->m_head = this->m_head->m_next;	
-	}
-
-	this->m_head = current;
-	this->m_head->m_val = arr[SIZE - 1];
-}
-*/
-
 template <class T>
 void my::Forward_list<T>::reverse() {
     if (!m_head || !m_head->m_next) {
-        // If the list is empty or has only one element, no need to reverse
         return;
     }
 
