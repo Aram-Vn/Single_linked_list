@@ -81,7 +81,6 @@ Once the forward list is integrated into your project, you can use the provided 
 // Default Constructor
 my::Forward_list<int> intList;
 ```
----
 
 ### Copy Constructor
 ```cpp
@@ -92,7 +91,6 @@ originalList.push_back(2);
 
 my::Forward_list<int> copiedList(originalList);
 ```
----
 
 ### Move Constructor
 ```cpp
@@ -103,21 +101,18 @@ sourceList.push_back(2);
 
 my::Forward_list<int> destinationList(std::move(sourceList));
 ```
----
 
 ### Initializer List Constructor
 ```cpp
 // Initializer List Constructor
 my::Forward_list<int> initializedList = {1, 2, 3, 4, 5};
 ```
----
 
 ### Destructor
 ```cpp
 // Destructor
 // Automatically called when the list goes out of scope
 ```
----
 
 ## Operators
 
@@ -131,7 +126,6 @@ originalList.push_back(2);
 my::Forward_list<int> assignedList;
 assignedList = originalList;
 ```
----
 
 ## Move Assignment Operator
 ```cpp
@@ -153,7 +147,6 @@ destinationList = std::move(sourceList);
 my::Forward_list<int> intList = {1, 2, 3};
 int frontElement = intList.front(); // frontElement will be 1
 ```
----
 
 ## Back
 ```cpp
@@ -161,7 +154,6 @@ int frontElement = intList.front(); // frontElement will be 1
 my::Forward_list<int> intList = {1, 2, 3};
 int backElement = intList.back(); // backElement will be 3
 ```
----
 
 ## Print
 ```cpp
@@ -179,7 +171,6 @@ intList.print(); // Output: 1 2 3
 my::Forward_list<int> emptyList;
 bool isEmpty = emptyList.empty(); // isEmpty will be true
 ```
----
 
 ## Size
 ```cpp
@@ -197,7 +188,6 @@ size_t listSize = intList.size(); // listSize will be 3
 my::Forward_list<int> intList = {1, 2, 3};
 intList.clear(); // intList is now an empty list
 ```
----
 
 ## Insert
 ```cpp
@@ -205,7 +195,6 @@ intList.clear(); // intList is now an empty list
 my::Forward_list<int> intList = {1, 2, 3};
 intList.insert(1, 10); // Insert 10 at index 1, resulting in: 1 10 2 3
 ```
----
 
 ## Erase
 ```cpp
@@ -213,7 +202,6 @@ intList.insert(1, 10); // Insert 10 at index 1, resulting in: 1 10 2 3
 my::Forward_list<int> intList = {1, 2, 3};
 intList.erase(1); // Erase element at index 1, resulting in: 1 3
 ```
----
 
 ## Push Back
 ```cpp
@@ -221,7 +209,6 @@ intList.erase(1); // Erase element at index 1, resulting in: 1 3
 my::Forward_list<int> intList = {1, 2, 3};
 intList.push_back(4); // Add 4 to the end, resulting in: 1 2 3 4
 ```
----
 
 ## Pop Back
 ```cpp
@@ -229,7 +216,6 @@ intList.push_back(4); // Add 4 to the end, resulting in: 1 2 3 4
 my::Forward_list<int> intList = {1, 2, 3};
 intList.pop_back(); // Remove the last element, resulting in: 1 2
 ```
----
 
 ## Push Front
 ```cpp
@@ -237,7 +223,6 @@ intList.pop_back(); // Remove the last element, resulting in: 1 2
 my::Forward_list<int> intList = {1, 2, 3};
 intList.push_front(0); // Add 0 to the beginning, resulting in: 0 1 2 3
 ```
----
 
 ## Pop Front
 ```cpp
@@ -245,7 +230,6 @@ intList.push_front(0); // Add 0 to the beginning, resulting in: 0 1 2 3
 my::Forward_list<int> intList = {1, 2, 3};
 intList.pop_front(); // Remove the first element, resulting in: 2 3
 ```
----
 
 ## Swap
 ```cpp
@@ -255,7 +239,6 @@ my::Forward_list<int> list2 = {4, 5, 6};
 
 list1.swap(list2); // list1 becomes {4, 5, 6}, list2 becomes {1, 2, 3}
 ```
----
 
 ## Assign (Count)
 ```cpp
@@ -263,7 +246,6 @@ list1.swap(list2); // list1 becomes {4, 5, 6}, list2 becomes {1, 2, 3}
 my::Forward_list<int> intList = {1, 2, 3};
 intList.assign(4, 0); // Assign 0 to 4 elements, resulting in: 0 0 0 0
 ```
----
 
 ## Assign (Initializer List)
 ```cpp
