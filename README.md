@@ -84,7 +84,8 @@ Once the forward list is integrated into your project, you can use the provided 
 - [Operators](#Operators-examples)
 - [Element Access](#Element-Access-examples)
 - [Capacity](#Capacity-examples)
-- [Modifiers](#Modifiers_examples)
+- [Modifiers](#Modifiers-examples)
+- [Operations](#Operations-examples)
 
 ## Constructors and Destructors examples
 
@@ -282,7 +283,7 @@ intList.assign({4, 5, 6}); // Assign elements from initializer list, resulting i
 ```
 ---
 
-# Operations
+# Operations examples
 
 ## Reverse
 ```cpp
