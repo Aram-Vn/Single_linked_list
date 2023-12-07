@@ -142,9 +142,12 @@ assignedList = originalList;
 my::Forward_list<int> sourceList;
 sourceList.push_back(1);
 sourceList.push_back(2);
+// sourceList 1, 2
 
 my::Forward_list<int> destinationList;
 destinationList = std::move(sourceList);
+// sourceList 1, 2
+// destinationList 1, 2
 ```
 ---
 
