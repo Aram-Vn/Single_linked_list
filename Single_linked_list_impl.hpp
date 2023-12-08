@@ -358,38 +358,37 @@ void my::Forward_list<T>::reverse() {
     m_head = prev;
 }
 
-template <class T>                                                                                                                                                                                             
-void my::Forward_list<T>::insertionSort()                                                                                                                                                                      
-{                                                                                                                                                                                                              
-    if (!m_head || !m_head->m_next) {                                                                                                                                                                          
-        return; // Already sorted or empty list                                                                                                                                                                
-    }                                                                                                                                                                                                          
-                                                                                                                                                                                                               
-    Node* sorted = nullptr;                                                                                                                                                                                    
-    Node* current = m_head;                                                                                                                                                                                    
-                                                                                                                                                                                                               
-    while (current) {                                                                                                                                                                                          
-        Node* next = current->m_next;                                                                                                                                                                          
-                                                                                                                                                                                                               
-        if (!sorted || current->m_val < sorted->m_val) {                                                                                                                                                       
-            // Insert at the beginning of the sorted list                                                                                                                                                      
-            current->m_next = sorted;                                                                                                                                                                          
-            sorted = current;                                                                                                                                                                                  
-        } else {                                                                                                                                                                                               
-            // Insert in the middle or at the end of the sorted list                                                                                                                                           
-            Node* temp = sorted;                                                                                                                                                                               
-            while (temp->m_next && current->m_val > temp->m_next->m_val) {                                                                                                                                     
-                temp = temp->m_next;                                                                                                                                                                           
-            }                                                                                                                                                                                                  
-            current->m_next = temp->m_next;                                                                                                                                                                    
-            temp->m_next = current;                                                                                                                                                                            
-        }                                                                                                                                                                                                      
-                                                                                                                                                                                                               
-        current = next;                                                                                                                                                                                        
-    }                                                                                                                                                                                                          
-                                                                                                                                                                                                               
-    m_head = sorted;                                                                                                                                                                                           
-}                                                                                                                                                                                                              
-  
+template <class T> 
+void my::Forward_list<T>::insertionSort()
+{              
+    if (!m_head || !m_head->m_next) { 
+        return; 
+    }
+ 
+    Node* sorted = nullptr;
+    Node* current = m_head;
 
+    while (current) {          
+        Node* next = current->m_next;
+
+        if (!sorted || current->m_val < sorted->m_val) {
+            current->m_next = sorted;
+            sorted = current;  
+        } else {  
+            Node* temp = sorted;                                          
+
+            while (temp->m_next && current->m_val > temp->m_next->m_val) { 
+                temp = temp->m_next;
+            }
+
+            current->m_next = temp->m_next;
+            temp->m_next = current;
+        }
+
+        current = next;
+    }
+
+    m_head = sorted;
+}
+  
 #endif // SINGLE_LINKED_LIST_H

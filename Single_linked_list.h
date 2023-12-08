@@ -43,7 +43,7 @@ namespace my {
 
 		//Operations
 		void reverse(); // Reverse the order of elements in the list
-		void insertionSort() // surtes list by using insertion Sort algorithm
+		void insertionSort(); // surtes list by using insertion Sort algorithm
 
 	private:
 		struct Node

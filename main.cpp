@@ -3,12 +3,12 @@
 
 int main(){
  
-	my::Forward_list<int> my_list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	my::Forward_list<int> my_list = {8, 7, 6, 4, 9, 2, 7, 15, 1, 0};
 
 	my_list.print();
 	std::cout << "*****" << std::endl;
 	
-	my_list.reverse();
+	my_list.insertionSort();
 	my_list.print();
 	std::cout << "*****" << std::endl;
 	
