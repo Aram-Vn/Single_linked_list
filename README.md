@@ -152,7 +152,7 @@ assignedList = originalList;
 // destinationList 1, 2
 ```
 
-## Move Assignment Operator
+### Move Assignment Operator
 ```cpp
 // Move Assignment Operator
 my::Forward_list<int> sourceList;
@@ -167,23 +167,23 @@ destinationList = std::move(sourceList);
 ```
 ---
 
-# Element Access examples 
+## Element Access examples 
 
-## Front
+### Front
 ```cpp
 // Front
 my::Forward_list<int> intList = {1, 2, 3};
 int frontElement = intList.front(); // frontElement will be 1
 ```
 
-## Back
+### Back
 ```cpp
 // Back
 my::Forward_list<int> intList = {1, 2, 3};
 int backElement = intList.back(); // backElement will be 3
 ```
 
-## Print
+### Print
 ```cpp
 // Print
 my::Forward_list<int> intList = {1, 2, 3};
@@ -191,16 +191,16 @@ intList.print(); // Output: 1 2 3
 ```
 ---
 
-# Capacity examples
+## Capacity examples
 
-## Empty
+### Empty
 ```cpp
 // Empty
 my::Forward_list<int> emptyList;
 bool isEmpty = emptyList.empty(); // isEmpty will be true
 ```
 
-## Size
+### Size
 ```cpp
 // Size
 my::Forward_list<int> intList = {1, 2, 3};
@@ -208,16 +208,16 @@ size_t listSize = intList.size(); // listSize will be 3
 ```
 ---
 
-# Modifiers examples
+## Modifiers examples
 
-## Clear
+### Clear
 ```cpp
 // Clear
 my::Forward_list<int> intList = {1, 2, 3};
 intList.clear(); // intList is now an empty list
 ```
 
-## Insert
+### Insert
 
 ```cpp
 // Insert
@@ -228,14 +228,14 @@ intList.insert(1, 10); // Insert 10 at index 1, resulting in: 1 10 2 3
   <img src="https://github.com/Aram-Vn/Queue/assets/118690340/24b17332-cf6e-4836-88a2-553013e7896a" alt="Insert">
 </div>
 
-## Erase
+### Erase
 ```cpp
 // Erase
 my::Forward_list<int> intList = {1, 2, 3};
 intList.erase(1); // Erase element at index 1, resulting in: 1 3
 ```
 
-## Push Back
+### Push Back
 ```cpp
 // Push Back
 my::Forward_list<int> intList = {1, 2, 3};
@@ -246,14 +246,14 @@ intList.push_back(4); // Add 4 to the end, resulting in: 1 2 3 4
 </div>
 
 
-## Pop Back
+### Pop Back
 ```cpp
 // Pop Back
 my::Forward_list<int> intList = {1, 2, 3};
 intList.pop_back(); // Remove the last element, resulting in: 1 2
 ```
 
-## Push Front
+### Push Front
 ```cpp
 // Push Front
 my::Forward_list<int> intList = {1, 2, 3};
@@ -263,14 +263,14 @@ intList.push_front(0); // Add 0 to the beginning, resulting in: 0 1 2 3
   <img src="https://github.com/Aram-Vn/Single_linked_list/assets/118690340/ceeb7e1c-035a-4011-bbc7-266e5b205512" alt="Push_Front">
 </div>
 
-## Pop Front
+### Pop Front
 ```cpp
 // Pop Front
 my::Forward_list<int> intList = {1, 2, 3};
 intList.pop_front(); // Remove the first element, resulting in: 2 3
 ```
 
-## Swap
+### Swap
 ```cpp
 // Swap
 my::Forward_list<int> list1 = {1, 2, 3};
@@ -279,14 +279,14 @@ my::Forward_list<int> list2 = {4, 5, 6};
 list1.swap(list2); // list1 becomes {4, 5, 6}, list2 becomes {1, 2, 3}
 ```
 
-## Assign (Count)
+### Assign (Count)
 ```cpp
 // Assign (Count)
 my::Forward_list<int> intList = {1, 2, 3};
 intList.assign(4, 0); // Assign 0 to 4 elements, resulting in: 0 0 0 0
 ```
 
-## Assign (Initializer List)
+### Assign (Initializer List)
 ```cpp
 // Assign (Initializer List)
 my::Forward_list<int> intList = {1, 2, 3};
@@ -294,9 +294,9 @@ intList.assign({4, 5, 6}); // Assign elements from initializer list, resulting i
 ```
 ---
 
-# Operations examples
+## Operations examples
 
-## Reverse
+### Reverse
 ```cpp
 // Reverse
 my::Forward_list<int> intList = {1, 2, 3};
