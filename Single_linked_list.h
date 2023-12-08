@@ -44,6 +44,7 @@ namespace my {
 		//Operations
 		void reverse(); // Reverse the order of elements in the list
 		void insertionSort(); // surtes list by using insertion Sort algorithm
+		/* Forward_list<T>& merge(Forward_list<T>& other); */	
 
 	private:
 		struct Node

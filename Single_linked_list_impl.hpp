@@ -390,5 +390,50 @@ void my::Forward_list<T>::insertionSort()
 
     m_head = sorted;
 }
+
+/* template <typename T> */
+/* Forward_list<T>& my::Forward_list<T>::merge(Forward_list<T> &other) */
+/* { */
+/* 	Node	*tmp1 = this->m_head; */
+/* 	Node	*tmp2 = other.m_head; */
+/* 	Node	*curr; */
+
+/* 	if (!other.m_head) */
+/* 		return (*this); */
+/* 	if (tmp1 && tmp2) */
+/* 	{ */
+/* 		if (tmp2->m_val <= tmp1->m_val) */
+/* 		{ */
+/* 			this->m_head = tmp2; */
+/* 			tmp2 = tmp2->m_next; */
+/* 		} */
+/* 	} */
+/* 	curr = this->m_head; */
+/* 	while (tmp1 && tmp2) */
+/* 	{ */
+/* 		if (tmp1->m_val <= tmp2->m_val) */
+/* 		{ */
+/* 			curr->m_next = tmp1; */
+/* 			tmp1 = tmp1->m_next; */
+/* 		} */
+/* 		else */
+/* 		{ */
+/* 			curr->m_next = tmp2; */
+/* 			tmp2 = tmp2->m_next; */
+/* 		} */
+/* 		curr = curr->m_next; */
+/* 	} */
+/* 	if (tmp1) */
+/* 		curr->m_next = tmp1; */
+/* 	else if (tmp2) */
+/* 	{ */
+/* 		curr->m_next = tmp2; */
+/* 		this->tail = other.tail; */
+/* 	} */
+/* 	other.m_head = nullptr; */
+/* 	other.tail = nullptr; */
+/* 	other.size = 0; */
+/* 	return (*this); */
+/* } */
   
 #endif // SINGLE_LINKED_LIST_H
