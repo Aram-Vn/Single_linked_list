@@ -218,6 +218,7 @@ intList.clear(); // intList is now an empty list
 ```
 
 ## Insert
+![Alt text](https://media.geeksforgeeks.org/wp-content/cdn-uploads/gq/2013/03/Linkedlist_insert_middle.png)
 ```cpp
 // Insert
 my::Forward_list<int> intList = {1, 2, 3};
