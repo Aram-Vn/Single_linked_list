@@ -50,6 +50,7 @@
 ### Operations
 
 - `reverse()`: Reverses the order of elements in the forward list.
+-`insertionSort()`: sorted list by using insertion Sort algorithm
 
 ---
 
@@ -303,5 +304,14 @@ my::Forward_list<int> intList = {1, 2, 3};
 intList.reverse(); // Reverses the list, resulting in: 3 2 1
 ```
 <div align="center">
-  <img src="https://github.com/Aram-Vn/Single_linked_list/assets/118690340/6025ff5c-e95d-4d79-91f2-a3b8003f505d" alt="Reverse_Animated_GIF" width="350">
+  <img src="https://github.com/Aram-Vn/Single_linked_list/assets/118690340/6025ff5c-e95d-4d79-91f2-a3b8003f505d" alt="Reverse_Animated_GIF" width="310">
 </div>
+
+---
+
+### insertionSort
+```cpp
+	my::Forward_list<int> my_list = {8, 7, 6, 4, 9, 2, 7, 15, 1, 0};
+
+	my_list.insertionSort() // sorted list, resulting : 0, 1, 2, 4, 6, 7, 7, 8, 9, 15  
+```
