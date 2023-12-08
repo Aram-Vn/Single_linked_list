@@ -297,6 +297,14 @@ intList.assign({4, 5, 6}); // Assign elements from initializer list, resulting i
 
 ## Operations examples
 
+### Insertion Sort
+
+```cpp
+//insertionSort
+my::Forward_list<int> my_list = {8, 7, 6, 4, 9, 2, 7, 15, 1, 0};
+my_list.insertionSort() // sorted list, resulting : 0, 1, 2, 4, 6, 7, 7, 8, 9, 15  
+```
+
 ### Reverse
 ```cpp
 // Reverse
@@ -309,10 +317,4 @@ intList.reverse(); // Reverses the list, resulting in: 3 2 1
 
 
 
-### insertionSort
 
-```cpp
-	my::Forward_list<int> my_list = {8, 7, 6, 4, 9, 2, 7, 15, 1, 0};
-
-	my_list.insertionSort() // sorted list, resulting : 0, 1, 2, 4, 6, 7, 7, 8, 9, 15  
-```
