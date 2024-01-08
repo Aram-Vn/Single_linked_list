@@ -40,7 +40,7 @@ typename my::Forward_list<T>::Node* my::Forward_list<T>::F_iterator::operator->(
 template <class T>
 typename my::Forward_list<T>::F_iterator& my::Forward_list<T>::F_iterator::operator++()
 {
-    ++ptr;
+    ptr = ptr->m_next;
     return *this;
 }
 
@@ -49,9 +49,8 @@ template <class T>
 typename my::Forward_list<T>::F_iterator my::Forward_list<T>::F_iterator::operator++(int)
 {
     f_itr tmp = *this;
-    ++ptr;
+    ptr = ptr->m_next;
     return tmp;
-    ;
 }
 
 //------------------_F_iterator__Equality_Comparison_Operator_----------//
