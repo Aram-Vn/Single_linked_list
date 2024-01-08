@@ -19,25 +19,25 @@ namespace my {
         };
 
     public:
-        class Forword_itr
+        class F_iterator
         {
         public:
-            Forword_itr();
-            Forword_itr(Node* ptr);
-            Forword_itr& operator=(const Forword_itr& other);
+            F_iterator();
+            F_iterator(Node* ptr1);
+            F_iterator& operator=(const F_iterator& other);
             Node& operator*();
             Node* operator->();
-            Forword_itr& operator++();
-            Forword_itr operator++(int);
-            bool operator==(const Forword_itr& other);
-            bool operator!=(const Forword_itr& other);
+            F_iterator& operator++();
+            F_iterator operator++(int);
+            bool operator==(const F_iterator& other);
+            bool operator!=(const F_iterator& other);
 
         private:
             Node* ptr;
         };
 
     public:
-        using f_itr = Forword_itr;
+        using f_itr = F_iterator;
         f_itr begin();
         f_itr end();
 

@@ -1,11 +1,89 @@
 #ifndef SINGLE_LINKED_LIST_IMPL_HPP
 #define SINGLE_LINKED_LIST_IMPL_HPP
 
-//-----------------------forword_itr_-----------------------------//
+//---------------------------------------------------------------||
+//----------------------F_iterator-------------------------------||
+//---------------------------------------------------------------||
+
+//----------------F_iterator__Default_Constructor_---------------------//
 template <class T>
-my::Forward_list<T>::Forward_itr::Forward_itr() : ptr(nullptr)
+my::Forward_list<T>::F_iterator::F_iterator() : ptr(nullptr)
 {
 }
+
+//-----------------_F_iterator__Parameterized_Constructor-------------//
+template <class T>
+my::Forward_list<T>::F_iterator::F_iterator(Node* ptr1) : ptr(ptr1)
+{
+}
+
+//-----------------_F_iterator__Copy_Assignment_Operator_-------------//
+template <class T>
+typename my::Forward_list<T>::F_iterator& my::Forward_list<T>::F_iterator::operator=(const F_iterator& other)
+{
+}
+
+//------------------_F_iterator__Dereference_Operator_----------------//
+template <class T>
+typename my::Forward_list<T>::Node& my::Forward_list<T>::F_iterator::operator*()
+{
+    return *ptr;
+}
+//-------------------_F_iterator__Arrow_Operator_---------------------//
+template <class T>
+typename my::Forward_list<T>::Node* my::Forward_list<T>::F_iterator::operator->()
+{
+    return ptr;
+}
+
+//--------------------_F_iterator__Pre-increment_Operator_------------//
+template <class T>
+typename my::Forward_list<T>::F_iterator& my::Forward_list<T>::F_iterator::operator++()
+{
+    ++ptr;
+    return *this;
+}
+
+//--------------------_F_iterator__Post-increment_Operator_------------//
+template <class T>
+typename my::Forward_list<T>::F_iterator my::Forward_list<T>::F_iterator::operator++(int)
+{
+    f_itr tmp = *this;
+    ++ptr;
+    return tmp;
+    ;
+}
+
+//------------------_F_iterator__Equality_Comparison_Operator_----------//
+template <class T>
+bool my::Forward_list<T>::F_iterator::operator==(const F_iterator& other)
+{
+    return (this->ptr == other.ptr);
+}
+
+//----------------_F_iterator__Inequality_Comparison_Operator_----------//
+template <class T>
+bool my::Forward_list<T>::F_iterator::operator!=(const F_iterator& other)
+{
+    return !(this->ptr == other.ptr);
+}
+
+template <class T>
+typename my::Forward_list<T>::F_iterator my::Forward_list<T>::begin()
+{
+    return F_iterator(m_head);
+}
+
+
+template <class T>
+typename my::Forward_list<T>::F_iterator my::Forward_list<T>::end()
+{
+    return F_iterator(nullptr);
+}
+
+//----------------------------------------------------------------------||
+//-------------------------_Forward_list_-------------------------------||
+//----------------------------------------------------------------------||
 
 template <class T>
 my::Forward_list<T>::Forward_list() : m_head(nullptr)
@@ -488,6 +566,5 @@ void my::Forward_list<T>::insertionSort()
 /* 	other.size = 0; */
 /* 	return (*this); */
 /* } */
-
 
 #endif // SINGLE_LINKED_LIST_H
