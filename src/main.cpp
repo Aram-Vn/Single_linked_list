@@ -20,6 +20,13 @@ int main(){
 	
 	for(auto val = my_list.begin(); val != my_list.end(); ++val)
 	{
+		if(val == itr)
+		{
+			std::cout << "\nYES  ";
+			std::cout  << itr->m_val << std::endl;
+			++val;
+		}
+
 		std::cout << val->m_val << " ";
 	}
 	std::cout << std::endl;
