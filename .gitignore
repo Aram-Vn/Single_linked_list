@@ -3,4 +3,5 @@ build/
 compile_commands.json
 src/*.cpp
 src/*.out
+src/*.bak
 .vscode/
