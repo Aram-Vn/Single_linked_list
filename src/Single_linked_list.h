@@ -1,45 +1,47 @@
 #ifndef SINGLE_LINKED_LIST_H
 #define SINGLE_LINKED_LIST_H
 
-#include <iterator>
+#include <iostream>
+#include <optional>
+
 namespace my {
     template <class T>
     class Forward_list
     {
     private:
-        struct Node
+        struct Node // Node structure to represent nodes in the linked lis, which holdes value and pointer to next node
         {
         public:
             Node(T val, Node* node_ptr); // Node parameterized constructor
             ~Node() = default;
 
         public:
-            T m_val;
-            Node* m_next = nullptr;
+            T m_val;                // Value of the node
+            Node* m_next = nullptr; // Pointer to the next node in the list
         };
 
     public:
-        class F_iterator
+        class F_iterator // nested forward iterator for the linked list
         {
         public:
-            F_iterator();
-            F_iterator(Node* ptr1);
-            F_iterator& operator=(const F_iterator& other);
-            Node& operator*();
-            Node* operator->();
-            F_iterator& operator++();
-            F_iterator operator++(int);
-            bool operator==(const F_iterator& other);
-            bool operator!=(const F_iterator& other);
+            F_iterator();                                   // Default constructor
+            F_iterator(Node* ptr1);                         // F_iterator parameterized constructor
+            F_iterator& operator=(const F_iterator& other); // copy assignment operator
+            T& operator*();                                 // Dereference operator to access the value of the node
+            Node* operator->();                             // Arrow operator to access the members of the node
+            F_iterator& operator++();                       // Prefix increment operator to move to the next node
+            F_iterator operator++(int);                     // Postfix increment operator
+            bool operator==(const F_iterator& other);       // Equality operator
+            bool operator!=(const F_iterator& other);       // Inequality operator
 
         private:
-            Node* ptr;
+            Node* ptr; // Pointer to the current node
         };
 
     public:
-        using f_itr = F_iterator;
-        f_itr begin();
-        f_itr end();
+        using f_itr = F_iterator; // Type alias for the F_iterator
+        f_itr begin();            // Returns an iterator pointing to the first element
+        f_itr end();              // return nullptr
 
     public:
         // destructor
@@ -60,9 +62,10 @@ namespace my {
 
     public:
         // Element access
-        T front() const; // Retrieve the value of the first element
-        T back() const;  // Retrieve the value of the last element
-        void print();    // Print the elements of the list
+        T front() const;          // Retrieve the value of the first element
+        T back() const;           // Retrieve the value of the last element
+        void print();             // Print the elements of the list
+        f_itr find(const T& val); // find and return the val if it exists
 
         // Capacity
         bool empty() const;  // Check if the list is empty, if empty returnde true, else false

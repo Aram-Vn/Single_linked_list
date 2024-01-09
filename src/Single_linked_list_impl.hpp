@@ -6,6 +6,8 @@
 //---------------------------------------------------------------||
 
 //----------------F_iterator__Default_Constructor_---------------------//
+#include "Single_linked_list.h"
+#include <optional>
 template <class T>
 my::Forward_list<T>::F_iterator::F_iterator() : ptr(nullptr)
 {
@@ -25,9 +27,9 @@ typename my::Forward_list<T>::F_iterator& my::Forward_list<T>::F_iterator::opera
 
 //------------------_F_iterator__Dereference_Operator_----------------//
 template <class T>
-typename my::Forward_list<T>::Node& my::Forward_list<T>::F_iterator::operator*()
+T& my::Forward_list<T>::F_iterator::operator*()
 {
-    return *ptr;
+    return ptr->m_val;
 }
 //-------------------_F_iterator__Arrow_Operator_---------------------//
 template <class T>
@@ -521,49 +523,18 @@ void my::Forward_list<T>::insertionSort()
     m_head = sorted;
 }
 
-/* template <typename T> */
-/* Forward_list<T>& my::Forward_list<T>::merge(Forward_list<T> &other) */
-/* { */
-/* 	Node	*tmp1 = this->m_head; */
-/* 	Node	*tmp2 = other.m_head; */
-/* 	Node	*curr; */
+template <class T>
+typename my::Forward_list<T>::f_itr my::Forward_list<T>::find(const T& val)
+{
+    for(auto itr = this->begin(); itr != this->end(); ++itr)
+    {
+        if(itr->m_val == val)
+        {
+            return itr;
+        }
+    }
 
-/* 	if (!other.m_head) */
-/* 		return (*this); */
-/* 	if (tmp1 && tmp2) */
-/* 	{ */
-/* 		if (tmp2->m_val <= tmp1->m_val) */
-/* 		{ */
-/* 			this->m_head = tmp2; */
-/* 			tmp2 = tmp2->m_next; */
-/* 		} */
-/* 	} */
-/* 	curr = this->m_head; */
-/* 	while (tmp1 && tmp2) */
-/* 	{ */
-/* 		if (tmp1->m_val <= tmp2->m_val) */
-/* 		{ */
-/* 			curr->m_next = tmp1; */
-/* 			tmp1 = tmp1->m_next; */
-/* 		} */
-/* 		else */
-/* 		{ */
-/* 			curr->m_next = tmp2; */
-/* 			tmp2 = tmp2->m_next; */
-/* 		} */
-/* 		curr = curr->m_next; */
-/* 	} */
-/* 	if (tmp1) */
-/* 		curr->m_next = tmp1; */
-/* 	else if (tmp2) */
-/* 	{ */
-/* 		curr->m_next = tmp2; */
-/* 		this->tail = other.tail; */
-/* 	} */
-/* 	other.m_head = nullptr; */
-/* 	other.tail = nullptr; */
-/* 	other.size = 0; */
-/* 	return (*this); */
-/* } */
+    return nullptr;
+}
 
 #endif // SINGLE_LINKED_LIST_H
