@@ -4,3 +4,4 @@ compile_commands.json
 src/*.out
 src/*.out
 .vscode/
+src/main.cpp.bak
