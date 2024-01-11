@@ -537,4 +537,21 @@ typename my::Forward_list<T>::f_itr my::Forward_list<T>::find(const T& val)
     return nullptr;
 }
 
+template <class T>
+void my::Forward_list<T>::erase(const f_itr& pos)
+{
+
+    int ind = 0;
+
+    for (auto itr = this->begin(); itr != this->end(); ++itr) 
+    {
+        if(itr == pos)
+        {
+            erase(ind);
+            return;
+        }
+        ++ind;
+    }
+
+}
 #endif // SINGLE_LINKED_LIST_H
