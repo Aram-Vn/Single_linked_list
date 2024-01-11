@@ -189,14 +189,14 @@ my::Forward_list<T>& my::Forward_list<T>::operator=(Forward_list&& other) noexce
 }
 
 template <class T>
-void my::Forward_list<T>::push_front(int data)
+void my::Forward_list<T>::push_front(T data)
 {
     Node* new_node = new Node{ data, m_head };
     m_head = new_node;
 }
 
 template <class T>
-void my::Forward_list<T>::push_back(int data)
+void my::Forward_list<T>::push_back(T data)
 {
     if (!m_head)
     {
