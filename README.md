@@ -50,7 +50,26 @@
 ### Operations
 
 - `reverse()`: Reverses the order of elements in the forward list.
--`insertionSort()`: sorted list by using insertion Sort algorithm
+- `insertionSort()`: sorted list by using insertion Sort algorithm
+
+## Iterator
+
+### `F_iterator` (Nested Forward Iterator)
+
+- `F_iterator()`: Default constructor.
+- `F_iterator(Node* ptr1)`: Parameterized constructor.
+- `F_iterator& operator=(const F_iterator& other)`: Copy assignment operator.
+- `T& operator*()`: Dereference operator to access the value of the node.
+- `Node* operator->()`: Arrow operator to access the members of the node.
+- `F_iterator& operator++()`: Prefix increment operator to move to the next node.
+- `F_iterator operator++(int)`: Postfix increment operator.
+- `bool operator==(const F_iterator& other)`: Equality operator.
+- `bool operator!=(const F_iterator& other)`: Inequality operator.
+
+### Iterator Methods
+
+- `f_itr begin()`: Returns an iterator pointing to the first element.
+- `f_itr end()`: Returns an iterator pointing to the end of the list (nullptr).
 
 ---
 

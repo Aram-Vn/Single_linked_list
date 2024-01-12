@@ -76,9 +76,9 @@ namespace my {
         void insert(int index, const T& value); // Insert an element ( value ) at the specified index
         void erase(int index);                  //  Erase the element at the specified index (if index >= 0 && < size())
         void erase(f_itr pos);                  //  Erase the element at the specified index (if index >= 0 && < size())
-        void push_back(T data);               // Add an element to the end of the list
+        void push_back(T data);                 // Add an element to the end of the list
         void pop_back();                        // Remove the last element from the list
-        void push_front(T data);              // Add an element to the beginning of the list
+        void push_front(T data);                // Add an element to the beginning of the list
         void pop_front();                       // Remove the first element from the list
         void swap(Forward_list& other);         // Swap the contents of two lists
         void assign(int count, const T& value); // removes all prevues value, Assign a specified value to a specified
