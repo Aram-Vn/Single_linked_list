@@ -75,7 +75,6 @@ typename my::Forward_list<T>::F_iterator my::Forward_list<T>::begin()
     return F_iterator(m_head);
 }
 
-
 template <class T>
 typename my::Forward_list<T>::F_iterator my::Forward_list<T>::end()
 {
@@ -526,9 +525,9 @@ void my::Forward_list<T>::insertionSort()
 template <class T>
 typename my::Forward_list<T>::f_itr my::Forward_list<T>::find(const T& val)
 {
-    for(auto itr = this->begin(); itr != this->end(); ++itr)
+    for (auto itr = this->begin(); itr != this->end(); ++itr)
     {
-        if(itr->m_val == val)
+        if (itr->m_val == val)
         {
             return itr;
         }
@@ -538,20 +537,28 @@ typename my::Forward_list<T>::f_itr my::Forward_list<T>::find(const T& val)
 }
 
 template <class T>
-void my::Forward_list<T>::erase(const f_itr& pos)
+void my::Forward_list<T>::erase(f_itr pos)
 {
-
-    int ind = 0;
-
-    for (auto itr = this->begin(); itr != this->end(); ++itr) 
+    if (pos == begin())
     {
-        if(itr == pos)
-        {
-            erase(ind);
-            return;
-        }
-        ++ind;
+        pop_front();
+        return;
     }
 
+    f_itr tmp_itr = begin();
+    Node* prev = nullptr;
+    Node* curr = m_head;
+
+    while(tmp_itr != pos)
+    {
+        prev = curr;
+        curr = curr->m_next;
+        ++tmp_itr;
+    }
+
+    Node* next = curr->m_next;
+    delete curr;
+    prev->m_next = next;
 }
+
 #endif // SINGLE_LINKED_LIST_H

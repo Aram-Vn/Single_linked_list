@@ -75,7 +75,7 @@ namespace my {
         void clear();                           // Remove all elements from the list, m_head = nullptr;
         void insert(int index, const T& value); // Insert an element ( value ) at the specified index
         void erase(int index);                  //  Erase the element at the specified index (if index >= 0 && < size())
-        void erase(const f_itr& pos);                  //  Erase the element at the specified index (if index >= 0 && < size())
+        void erase(f_itr pos);                  //  Erase the element at the specified index (if index >= 0 && < size())
         void push_back(T data);               // Add an element to the end of the list
         void pop_back();                        // Remove the last element from the list
         void push_front(T data);              // Add an element to the beginning of the list
