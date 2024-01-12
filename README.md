@@ -81,9 +81,45 @@
 
 ---
 
-## Usage
+## How to Use
+Clone the repository:
 
-To use the `my::Forward_list` class, copy both `Forward_list.h` and `Forward_list_impl.hpp` files into your project directory. Include the "Forward_list.h" header file in your C++ project.
+with ssh`
+   ```bash
+   git clone git@github.com:Aram-Vn/Single_linked_list.git
+   cd binary-search-tree
+   ```
+with HTTPS`       
+   ```bash
+   git clone https://github.com/Aram-Vn/Single_linked_list.git
+   cd binary-search-tree
+   ```
+or with GitHub CLI
+   ```bash
+   git clone gh repo clone Aram-Vn/Single_linked_list
+   cd binary-search-tree
+   ```
+
+After clonning you can add main.cpp in crs/ and use cmake to compile.
+
+## Build instruction
+1. Generate the cmake build files first by executing the following command at the root directory:
+```
+cmake ./ -B build/
+```
+You will see a `build` folder in the root directory which will contain cmake's generation files.
+
+2. Compile and build the cmake project:
+```
+cmake --build build/
+```
+
+3. Run the executable:
+```
+build/BinarySearchTree
+```
+
+## or you can just  use the `my::Forward_list` class, by copying `Forward_list.h` and `Forward_list_impl.hpp` files into your project directory. Include the "Forward_list.h" header file in your C++ project.
 
 ```cpp
 #include "Forward_list.h"
@@ -92,7 +128,7 @@ To use the `my::Forward_list` class, copy both `Forward_list.h` and `Forward_lis
 ## Compiling:
 
 ``bash
-g++ -o <your_program_name> main.cpp
+g++ -o <your_program_name> <your_project_file>
 ``
 
 ---
