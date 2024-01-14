@@ -4,7 +4,7 @@
 ## Table of Contents
 - [Overview](#Overview)
 - [Features (Public Member Functions)](#Features)
-- [Usage](#Usage)
+- [How to Use](#Usage)
 - [function usege examples](#function-usege-examples)
 ---
 
@@ -85,53 +85,6 @@
 Clone the repository:
 
 with ssh`
-  
-    
-      
-        
-            
-    
-
-          
-Single_linked_list
-Single_linked_list          Public
-        
-          
-            
-            
-              
-    
-
-            
-              
-    
-    
-
-  
-
-              
-    
-    
-
-  
-
-          
-      
-
-
-      
-        
-      
-
-      
-          
-  
-  C++
-
-
-      
-    
-  
 
    ```bash
    git clone git@github.com:Aram-Vn/Single_linked_list.git
