@@ -4,7 +4,7 @@
 ## Table of Contents
 - [Overview](#Overview)
 - [Features (Public Member Functions)](#Features)
-- [How to Use](#Usage)
+- [How to Use](#How-to-Use)
 - [function usege examples](#function-usege-examples)
 ---
 
