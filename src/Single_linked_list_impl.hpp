@@ -6,8 +6,6 @@
 //---------------------------------------------------------------||
 
 //----------------F_iterator__Default_Constructor_---------------------//
-#include "Single_linked_list.h"
-#include <optional>
 template <class T>
 my::Forward_list<T>::F_iterator::F_iterator() : ptr(nullptr)
 {
