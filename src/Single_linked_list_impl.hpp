@@ -29,6 +29,7 @@ T& my::Forward_list<T>::F_iterator::operator*()
 {
     return ptr->m_val;
 }
+
 //-------------------_F_iterator__Arrow_Operator_---------------------//
 template <class T>
 typename my::Forward_list<T>::Node* my::Forward_list<T>::F_iterator::operator->()
@@ -79,14 +80,23 @@ typename my::Forward_list<T>::F_iterator my::Forward_list<T>::end()
     return F_iterator(nullptr);
 }
 
+//----------------------__Node__parameterized_constructor_-------------------//
+template <class T>
+my::Forward_list<T>::Node::Node(T val, Node* node_ptr) : m_val{ val }, m_next{ node_ptr }
+{
+}
+
 //----------------------------------------------------------------------||
 //-------------------------_Forward_list_-------------------------------||
 //----------------------------------------------------------------------||
 
+//-------------------------_Forward_list__Default_Constructor_-----------------//
 template <class T>
 my::Forward_list<T>::Forward_list() : m_head(nullptr)
 {
 }
+
+//------------------------__Forward_list__destructor_--------------------------//
 template <class T>
 my::Forward_list<T>::~Forward_list()
 {
@@ -98,135 +108,133 @@ my::Forward_list<T>::~Forward_list()
     }
 }
 
+//-----------------------__Forward_list__Copy_constructor_-------------------//
 template <typename T>
-my::Forward_list<T>::Forward_list(const Forward_list& other)
+my::Forward_list<T>::Forward_list(const Forward_list& other) // Copy constructor for the Forward_list class
 {
-    if (!other.m_head)
+    if (!other.m_head) // if other is empty(head is nullptr)
     {
-        return;
+        return; // return
     }
 
-    Node* current = other.m_head;
-    this->m_head = new Node(current->m_val, nullptr);
-    Node* this_current = this->m_head;
-    current = current->m_next;
+    Node* current = other.m_head;                     // Pointer to traverse the other list
+    this->m_head = new Node(current->m_val, nullptr); // Create the first node for the new list
+    Node* this_current = this->m_head;                // Pointer to the current node in the new list
+    current = current->m_next;                        // Move to the next node in the other list
 
-    while (current)
+    while (current) // Iterate through the other list and copy each node to the new list
     {
-        this_current->m_next = new Node(current->m_val, nullptr);
-        current = current->m_next;
-        this_current = this_current->m_next;
-    }
-}
-
-template <class T>
-my::Forward_list<T>::Forward_list(Forward_list&& other) noexcept : m_head{ other.m_head }
-{
-    other.m_head = nullptr;
-}
-
-template <class T>
-my::Forward_list<T>::Node::Node(T val, Node* node_ptr) : m_val{ val }, m_next{ node_ptr }
-{
-}
-
-template <class T>
-my::Forward_list<T>::Forward_list(std::initializer_list<T> init_list) : m_head(nullptr)
-{
-    for (const auto& elem : init_list)
-    {
-        this->push_back(elem);
+        this_current->m_next = new Node(current->m_val, nullptr); // Create a new node in now list with the value of other
+        current = current->m_next;                                // Move to the next node in the other list
+        this_current = this_current->m_next;                      // Move to the next node in the new list
     }
 }
 
+//-----------------------__Forward_list__Move_constructor__-------------------//
 template <class T>
-my::Forward_list<T>& my::Forward_list<T>::operator=(const Forward_list& other)
+my::Forward_list<T>::Forward_list(Forward_list&& other) noexcept // Move constructor for the Forward_list class
+    : m_head{ other.m_head } // Move the head pointer from the other list to the new list
 {
-    if (this != &other)
+    other.m_head = nullptr;  // Set the other list's head to nullptr
+}
+
+//--------------------__Forward_list__initializer_list_constructor------------//
+template <class T>
+my::Forward_list<T>::Forward_list(std::initializer_list<T> init_list) // Constructor that takes an initializer_list to initialize the Forward_list
+    : m_head(nullptr) // Initialize the head pointer to nullptr as the list is currently empty
+{
+    for (auto it = std::rbegin(init_list); it != std::rend(init_list); ++it)  // Iterate through the elements in the reversed list in reverse order
     {
-        clear();
+        this->push_front(*it); // Add each element to the front of the list using the push_front
+    }
+}
 
-        Node* otherCurrent = other.m_head;
-        Node* newCurrent = nullptr;
+//-------------------__Forward_list__Copy_assignment_operator__---------------//
+template <class T>
+my::Forward_list<T>& my::Forward_list<T>::operator=(const Forward_list& other) // Copy assignment operator for the Forward_list class
+{
+    if (this != &other) // Check for self-assignment
+    {
+        this->clear(); // Clear the existing content of the list
 
-        while (otherCurrent)
+        Node* current = other.m_head;                     // Pointer to traverse the other list
+        this->m_head = new Node(current->m_val, nullptr); // Create the first node for the new list
+        Node* this_current = this->m_head;                // Pointer to the current node in the new list
+        current = current->m_next;                        // Move to the next node in the other list
+
+        while (current) // Iterate through the other list and copy each node to the new list
         {
-            Node* newNode = new Node(otherCurrent->m_val, nullptr);
-
-            if (!m_head)
-            {
-                m_head = newNode;
-                newCurrent = m_head;
-            }
-            else
-            {
-                newCurrent->m_next = newNode;
-                newCurrent = newCurrent->m_next;
-            }
-
-            otherCurrent = otherCurrent->m_next;
+            this_current->m_next = new Node(current->m_val, nullptr); // Create a new node in the new list with the value of the current node in the other list
+            current = current->m_next;                                // Move to the next node in the other list
+            this_current = this_current->m_next;                      // Move to the next node in the new list
         }
     }
 
-    return *this;
+    
+    return *this; // Return a reference to the modified object to allow chaining assignments
 }
 
+//-------------------__Forward_list__Move_assignment_operator__----------------------------//
 template <class T>
-my::Forward_list<T>& my::Forward_list<T>::operator=(Forward_list&& other) noexcept
+my::Forward_list<T>& my::Forward_list<T>::operator=(Forward_list&& other) noexcept// Move assignment operator for the Forward_list class
 {
-    if (this != &other)
+    if (this != &other) // Check for self-assignment
     {
-        clear();
+        this->clear(); // Clear the existing content of the list
 
-        m_head = other.m_head;
-        other.m_head = nullptr;
+        this->m_head = other.m_head; // Transfer ownership of the nodes from the other list to the current list
+        other.m_head = nullptr;      // Set the other list's head to nullptr to indicate ownership transfer
     }
 
-    return *this;
+    return *this; // Return a reference to the modified object to allow chaining assignm
 }
 
+//--------------------------__Forward_list__push_front__-----------------------------------//
 template <class T>
-void my::Forward_list<T>::push_front(T data)
+void my::Forward_list<T>::push_front(T data) // Add value(data) at the front of list
 {
-    Node* new_node = new Node{ data, m_head };
-    m_head = new_node;
+    Node* new_node = new Node{ data, m_head };  // Create a new node with the specified data and the current head as the next nod
+    m_head = new_node;                          // Update the head to point to the new node
 }
 
+//---------------------------__Forward_list__push_back__---------------------------------//
 template <class T>
-void my::Forward_list<T>::push_back(T data)
+void my::Forward_list<T>::push_back(T data) // Add value(data) at the end of list
 {
-    if (!m_head)
+    if (!m_head) // Check if the list is empty
     {
-        m_head = new Node{ data, nullptr };
+        m_head = new Node{ data, nullptr }; // If empty, create a new node with the specified data as the head
         return;
     }
 
-    Node* current = m_head;
+    Node* current = m_head; // create pointer at the head of list to not lost the head
 
-    while (current->m_next)
+    while (current->m_next) // Iterate through the list to find the last node
     {
         current = current->m_next;
     }
 
-    current->m_next = new Node{ data, nullptr };
+    current->m_next = new Node{ data, nullptr }; // Create a new node with the specified data as the next node of the last
 }
 
+//---------------------------__Forward_list__pop_pront__---------------------------------//
 template <class T>
-void my::Forward_list<T>::pop_front()
+void my::Forward_list<T>::pop_front() // Remove the node at the front of the lis
 {
-    if (!m_head)
+    if (!m_head) // Check if the list is empty
     {
         std::cout << "List is empty!!!\nin pop_front()" << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if the list is empty
     }
 
-    Node* tmp_ptr = m_head;
-    m_head = m_head->m_next;
-    delete tmp_ptr;
+    Node* tmp_ptr = m_head;  // Temporary pointer to the current head
+    m_head = m_head->m_next; // Update the head to point to the next node,
+    delete tmp_ptr;          // Delete the old head using the temporary pointer
 }
 
+//---------------------------__Forward_list__pop_back__---------------------------------//
 template <class T>
-void my::Forward_list<T>::pop_back()
+void my::Forward_list<T>::pop_back() // Remove the last node from the list
 {
     if (!m_head)
     {
@@ -547,7 +555,7 @@ void my::Forward_list<T>::erase(f_itr pos)
     Node* prev = nullptr;
     Node* curr = m_head;
 
-    while(tmp_itr != pos)
+    while (tmp_itr != pos)
     {
         prev = curr;
         curr = curr->m_next;

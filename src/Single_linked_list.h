@@ -24,6 +24,7 @@ namespace my {
         class F_iterator // nested forward iterator for the linked list
         {
         public:
+            ~F_iterator() = default;
             F_iterator();                                   // Default constructor
             F_iterator(Node* ptr1);                         // F_iterator parameterized constructor
             F_iterator& operator=(const F_iterator& other); // copy assignment operator
