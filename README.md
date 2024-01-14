@@ -120,7 +120,8 @@ cmake --build build/
 build/BinarySearchTree
 ```
 
-#### or you can just  use the `my::Forward_list` class, by copying `Forward_list.h` and `Forward_list_impl.hpp` files into your project directory. Include the "Forward_list.h" header file in your C++ project.
+#### Or you can just  
+Use the `my::Forward_list` class, by copying `Forward_list.h` and `Forward_list_impl.hpp` files into your project directory. Include the "Forward_list.h" header file in your C++ project.
 
 ```cpp
 #include "Forward_list.h"
