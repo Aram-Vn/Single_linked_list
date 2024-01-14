@@ -236,67 +236,68 @@ void my::Forward_list<T>::pop_front() // Remove the node at the front of the lis
 template <class T>
 void my::Forward_list<T>::pop_back() // Remove the last node from the list
 {
-    if (!m_head)
+    if (!m_head) // Check if the list is empty
     {
         std::cout << "List is empty!!!\nCannot pop_back()." << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if the list is empty
     }
 
-    if (!m_head->m_next)
+    if (!m_head->m_next) // Check if there is only one node in the list
     {
-        delete m_head;
-        m_head = nullptr;
+        delete m_head;    // If only one node, delete it
+        m_head = nullptr; // set head to nullptr
         return;
     }
 
-    Node* current = m_head;
+    Node* current = m_head; // create pointer at the head of list to not lost the head
 
-    while (current->m_next->m_next)
+    while (current->m_next->m_next) // Traverse the list to find the second-to-last node
     {
         current = current->m_next;
     }
 
-    delete current->m_next;
-    current->m_next = nullptr;
+    delete current->m_next;    // Delete the last node
+    current->m_next = nullptr; // set the next pointer of the second-to-last node to nullptr
 }
 
+//---------------------------__Forward_list__insert__---------------------------------//
 template <class T>
-void my::Forward_list<T>::insert(int pos, const T& value)
+void my::Forward_list<T>::insert(int pos, const T& value) // insert value at specific position(pos)
 {
-    if (pos < 0)
+    if (pos < 0) // Check if the position is valid (non-negative)
     {
         std::cout << "In insert\nFirst argument must be >= 0" << std::endl;
         exit(0);
     }
 
-    if (pos == 0)
+    if (pos == 0) // If inserting at the beginning (position 0)
     {
-        Node* new_node = new Node(value, m_head);
-        m_head = new_node;
+        this->push_front(value); // call push_front to insert at the front of list
         return;
     }
 
-    int count = 0;
-    Node* current = m_head;
+    int count = 0;           // to hold current position
+    Node* current = m_head;  // create pointer at the head of list to not lost the head
 
-    while (current->m_next && count < pos - 1)
+    while (current->m_next && count < pos - 1) // Traverse the list to find the node at the position before given position(pos)
     {
         current = current->m_next;
         ++count;
     }
 
-    if (count == pos - 1)
+    if (count == pos - 1) // Check if the position is valid (within the current size of the list)
     {
-        Node* new_node = new Node(value, current->m_next);
-        current->m_next = new_node;
+        Node* new_node = new Node(value, current->m_next); // Create a new node with given value
+        current->m_next = new_node;                        // insert it into the list
     }
     else
     {
         std::cout << "In insert\nThere is no such index" << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if given position is invalid
     }
 }
 
+//---------------------------__Forward_list__erase__---------------------------------//
 template <class T>
 void my::Forward_list<T>::erase(int index)
 {
