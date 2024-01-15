@@ -90,7 +90,10 @@ namespace my {
         // Operations
         void reverse();       // Reverse the order of elements in the list
         void insertionSort(); // surtes list by using insertion Sort algorithm
-                              /* Forward_list<T>& merge(Forward_list<T>& other); */
+        void reverse_rec();   // recursively Reverse the order of elements in the list
+    
+    private:
+        void reverse_rec(Node* prev, Node* current); // reverse_rec helper
 
     private:
         Node* m_head;

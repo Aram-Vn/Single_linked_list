@@ -445,7 +445,7 @@ void my::Forward_list<T>::assign(int count, const T& value)// Assign a specific 
     }
 }
 
-//---------------------------__Forward_list__assign__---------------------------------//
+//-----------------------__Forward_list__assign(init_list)__----------------------------//
 template <class T>
 void my::Forward_list<T>::assign(const std::initializer_list<T>& init_list)
 {
@@ -457,43 +457,73 @@ void my::Forward_list<T>::assign(const std::initializer_list<T>& init_list)
     }
 }
 
+//---------------------------__Forward_list__print__---------------------------------//
 template <class T>
-void my::Forward_list<T>::print()
+void my::Forward_list<T>::print() // Print the values of nodes in the linked list
 {
-    Node* current = m_head;
+    Node* current = m_head; // createing temprary node for traversing
 
-    while (current->m_next)
+    while (current->m_next) // Iterate through the list and print the values of each node
     {
-        std::cout << current->m_val << " ";
-        current = current->m_next;
+        std::cout << current->m_val << " "; // Print the current node's value
+        current = current->m_next;          // Move to the next node
     }
-    std::cout << current->m_val << " ";
-    std::cout << std::endl;
+    std::cout << current->m_val << " ";     // Print the value of the last node
+    std::cout << std::endl;                 // Print a newline character
 }
 
+//---------------------------__Forward_list__reverse__---------------------------------//
 template <class T>
-void my::Forward_list<T>::reverse()
+void my::Forward_list<T>::reverse() // Reverse the linked list
 {
-    if (!m_head || !m_head->m_next)
+    if (!m_head || !m_head->m_next) // Check if the list is empty or has only one node
     {
         return;
     }
 
-    Node* prev = nullptr;
-    Node* current = m_head;
-    Node* next = nullptr;
+    Node* prev = nullptr;   // Pointer to the previous node
+    Node* current = m_head; // Pointer to the current node for traversing
+    Node* next = nullptr;   // Pointer to the next node
 
-    while (current)
+    while (current) // Iterate through the list and reverse the direction of next pointers
     {
-        next = current->m_next;
-        current->m_next = prev;
-        prev = current;
-        current = next;
+        next = current->m_next; // Save the next node (the rest of the original list)
+        current->m_next = prev; // Reverse the direction of the next pointer to point to
+        prev = current;         // Move to the next node in the original order
+        current = next;         // Move to the next node in the original order
     }
 
-    m_head = prev;
+    m_head = prev; // Set the head to the last node, which is now the first node after reversal
 }
 
+//-------------------------__Forward_list__reverse(recursive)__-----------------------------//
+template <class T>
+void my::Forward_list<T>::reverse_rec()
+{
+    if (!m_head || !m_head->m_next) // Check if the list is empty or has only one node
+    {
+        return;
+    }
+
+    reverse_rec(nullptr, m_head); // cal of recursive helper function
+}
+
+template <class T>
+void my::Forward_list<T>::reverse_rec(Node* prev1, Node* current2)
+{
+    if (!current2) // When the end of the list is reached, set the head to the last node
+    {
+        m_head = prev1;
+        return;
+    }
+
+    Node* next = current2->m_next; // Save the next node before modifying the next pointer
+    current2->m_next = prev1;       // Reverse the direction of the next pointer
+
+    reverse_rec(current, next); // Move to the next pair of nodes in the recursion
+}
+
+//-------------------------__Forward_list__insertionSort__-----------------------------//
 template <class T>
 void my::Forward_list<T>::insertionSort()
 {
