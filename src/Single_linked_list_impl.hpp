@@ -525,81 +525,84 @@ void my::Forward_list<T>::reverse_rec(Node* prev1, Node* current2)
 
 //-------------------------__Forward_list__insertionSort__-----------------------------//
 template <class T>
-void my::Forward_list<T>::insertionSort()
+void my::Forward_list<T>::insertionSort() // Sort the linked list using the Insertion Sort algorithm
 {
-    if (!m_head || !m_head->m_next)
+    if (!m_head || !m_head->m_next) // Check if the list is empty or has only one node
     {
-        return;
+        return; 
     }
 
-    Node* sorted = nullptr;
-    Node* current = m_head;
+    Node* sorted = nullptr; // Pointer to the sorted part of the list
+    Node* current = m_head; // Pointer to the current node
 
-    while (current)
+    while (current) // Traverse the list
     {
-        Node* next = current->m_next;
+        Node* next = current->m_next; //pointer to Save the next node before modifying pointers
 
-        if (!sorted || current->m_val < sorted->m_val)
+        if (!sorted || current->m_val < sorted->m_val) // If the sorted list is empty or the current node is smaller than the firs
         {
-            current->m_next = sorted;
-            sorted = current;
+            current->m_next = sorted; // Insert the current node at the beginning of the sort
+            sorted = current;         // Update the sorted pointer to the new head (current)
         }
         else
         {
-            Node* temp = sorted;
+            Node* temp = sorted; // Create a temporary pointer to traverse the sorted list
 
-            while (temp->m_next && current->m_val > temp->m_next->m_val)
+            while (temp->m_next && (current->m_val > temp->m_next->m_val))  // Traverse the sorted list to find the correct position for the current node
             {
                 temp = temp->m_next;
             }
 
-            current->m_next = temp->m_next;
-            temp->m_next = current;
+            current->m_next = temp->m_next; // Insert the current node into the sorted position
+            temp->m_next = current;         // Update the next pointer of the preceding node to point to the current node
         }
 
-        current = next;
+        current = next; // Move to the next node in the original order
     }
 
-    m_head = sorted;
+    m_head = sorted; // Set the head to the sorted list
 }
 
+//-------------------------__Forward_list__find(gets and returns iterator)__-----------------------------//
 template <class T>
-typename my::Forward_list<T>::f_itr my::Forward_list<T>::find(const T& val)
+typename my::Forward_list<T>::f_itr my::Forward_list<T>::find(const T& val)  // Find the first occurrence of a value in the linked list and return an iterator pointing on it
 {
-    for (auto itr = this->begin(); itr != this->end(); ++itr)
+
+    for (auto itr = this->begin(); itr != this->end(); ++itr)// Iterate through the list using begin() and end() iterators
     {
-        if (itr->m_val == val)
+        if (itr->m_val == val) // Check if the current node's value matches the target value
         {
-            return itr;
+            return itr; // Return an iterator pointing to the found node
         }
     }
 
-    return nullptr;
+    return nullptr; // Return nullptr if the value is not found in the list
 }
 
+//-------------------------__Forward_list__erase(gets iterator)__-----------------------------//
 template <class T>
-void my::Forward_list<T>::erase(f_itr pos)
+void my::Forward_list<T>::erase(f_itr pos) // Erase the node at the specified position in the linked list
 {
-    if (pos == begin())
+    if (pos == begin()) // Check if the position is the beginning of the list
     {
-        pop_front();
+        pop_front(); // cals function to remove first node
         return;
     }
 
-    f_itr tmp_itr = begin();
-    Node* prev = nullptr;
-    Node* curr = m_head;
+    f_itr tmp_itr = begin(); // Create an iterator to traverse the list
+    Node* prev = nullptr;    // Pointer to the previous node
+    Node* curr = m_head;     // Pointer to the current node
 
-    while (tmp_itr != pos)
+    while (tmp_itr != pos) // Traverse the list to find the node at the specified position
     {
         prev = curr;
         curr = curr->m_next;
         ++tmp_itr;
     }
 
-    Node* next = curr->m_next;
-    delete curr;
-    prev->m_next = next;
+    Node* next = curr->m_next; // Save the next node
+    delete curr;               // Delete the current node
+    prev->m_next = next;       // Update the next pointer of the preceding node
 }
 
 #endif // SINGLE_LINKED_LIST_H
