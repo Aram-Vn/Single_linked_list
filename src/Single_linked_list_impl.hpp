@@ -143,7 +143,7 @@ template <class T>
 my::Forward_list<T>::Forward_list(std::initializer_list<T> init_list) // Constructor that takes an initializer_list to initialize the Forward_list
     : m_head(nullptr) // Initialize the head pointer to nullptr as the list is currently empty
 {
-    for (auto it = std::rbegin(init_list); it != std::rend(init_list); ++it)  // Iterate through the elements in the reversed list in reverse order
+    for (auto it = std::rbegin(init_list); it != std::rend(init_list); ++it)  // Iterate through the elements in the list in reverse order
     {
         this->push_front(*it); // Add each element to the front of the list using the push_front
     }
@@ -367,7 +367,7 @@ T my::Forward_list<T>::back() const // Get the value of the last node in the lis
         return m_head->m_val;
     }
     
-    Node* current = m_head; // create temprary node for traversing 
+    Node* current = m_head; // createing temprary node for traversing 
 
     while (current->m_next->m_next) // Traverse the list to find the last node
     {
@@ -386,69 +386,74 @@ bool my::Forward_list<T>::empty() const // Check if the linked list is empty
 
 //---------------------------__Forward_list__size__---------------------------------//
 template <class T>
-size_t my::Forward_list<T>::size() const
+size_t my::Forward_list<T>::size() const // Get the size of the linked list
 {
-    if (!m_head)
+    if (!m_head) // Check if the list is empty
     {
-        return 0;
+        return 0; // Return 0 if empty list is empty
     }
 
-    size_t size = 1;
+    size_t size = 1; // for holding list's size
 
-    Node* tmp_ptr = m_head;
-    while (tmp_ptr->m_next)
+    Node* tmp_ptr = m_head; // createing temprary node for traversing
+
+    while (tmp_ptr->m_next) // Traverse the list
     {
         tmp_ptr = tmp_ptr->m_next;
-        ++size;
+        ++size; // count the number of nodes
     }
 
     return size;
 }
 
+//---------------------------__Forward_list__clear__---------------------------------//
 template <class T>
-void my::Forward_list<T>::clear()
+void my::Forward_list<T>::clear() // for Clearing the linked list by deleting all nodes
 {
-    while (m_head)
+    while (m_head) // Traverse the list
     {
-        Node* temp = m_head;
-        m_head = m_head->m_next;
-        delete temp;
+        Node* temp = m_head;     // Save the current head in a temporary pointer
+        m_head = m_head->m_next; // Move the head to the next node, effectively removing the curr
+        delete temp;             // Delete the old head using the temporary pointer
     }
-    m_head = nullptr;
+    m_head = nullptr;            // Set the head to nullptr after all nodes are deleted, indicating an empty list
 }
 
+//---------------------------__Forward_list__swap__---------------------------------//
 template <class T>
-void my::Forward_list<T>::swap(Forward_list& other)
+void my::Forward_list<T>::swap(Forward_list& other) // Swap the contents of two lists
 {
-    std::swap(this->m_head, other.m_head);
+    std::swap(this->m_head, other.m_head); // swaping this and other list's heades
 }
 
+//---------------------------__Forward_list__assign__---------------------------------//
 template <class T>
-void my::Forward_list<T>::assign(int count, const T& value)
+void my::Forward_list<T>::assign(int count, const T& value)// Assign a specific value to a specified number of nodes in the linked list
 {
-    if (count < 0)
+    if (count < 0) // Check if the count is valid (non-negative)
     {
-        std::cout << "in void assign(int count, const T& value)" << std::endl;
+        std::cout << "in assign(int count, const T& value)" << std::endl;
         std::cout << "count must be >= 0" << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program ifcount is invalid
     }
 
-    this->clear();
+    this->clear(); // Clear the existing content of the list
 
-    for (int i = 0; i < count; ++i)
+    for (int i = 0; i < count; ++i) // Add nodes to the list in count ammount
     {
-        this->push_back(value);
+        this->push_front(value); // Add nodes to the list with the specified value
     }
 }
 
+//---------------------------__Forward_list__assign__---------------------------------//
 template <class T>
 void my::Forward_list<T>::assign(const std::initializer_list<T>& init_list)
 {
     this->clear();
 
-    for (const T& elem : init_list)
+    for (auto it = std::rbegin(init_list); it != std::rend(init_list); ++it)  // Iterate through the elements in the list in reverse order
     {
-        this->push_back(elem);
+        this->push_front(*it); // Add each element to the front of the list using the push_front
     }
 }
 
