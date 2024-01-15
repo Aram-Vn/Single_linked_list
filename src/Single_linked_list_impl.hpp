@@ -267,7 +267,7 @@ void my::Forward_list<T>::insert(int pos, const T& value) // insert value at spe
     if (pos < 0) // Check if the position is valid (non-negative)
     {
         std::cout << "In insert\nFirst argument must be >= 0" << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if given position is invalid
     }
 
     if (pos == 0) // If inserting at the beginning (position 0)
@@ -299,93 +299,92 @@ void my::Forward_list<T>::insert(int pos, const T& value) // insert value at spe
 
 //---------------------------__Forward_list__erase__---------------------------------//
 template <class T>
-void my::Forward_list<T>::erase(int index)
+void my::Forward_list<T>::erase(int index) // Remove the node at the specified index in the list
 {
-    if (index < 0)
+    if (index < 0) // Check if the index is valid (non-negative)
     {
         std::cout << "In erase\nIndex must be >= 0" << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if given position is invalid
     }
 
-    if (index == 0)
+    if (index == 0) // If removing the first node (index 0)
     {
-        if (m_head)
-        {
-            Node* temp = m_head;
-            m_head = m_head->m_next;
-            delete temp;
-        }
+        this->pop_front(); // call pop_front function to remove first element
         return;
     }
 
-    int count = 0;
-    Node* current = m_head;
-    Node* previous = nullptr;
+    int count = 0;            // to hold current position
+    Node* current = m_head;   // Pointer to traverse the list
+    Node* previous = nullptr; // Pointer to the node before the current node
 
-    while (current && count < index)
+    while (current && count < index)// Traverse the list to find the node at the position before the given position(index)
     {
-        previous = current;
-        current = current->m_next;
-        ++count;
+        previous = current;        // Update the previous pointer to the current node
+        current = current->m_next; // Move to the next node in the list
+        ++count;                   // Increment the position counter
     }
 
-    if (count == index && current)
+    if (count == index && current) // Check if the index is valid (within the current size of the list)
     {
-        if (previous)
+        if (previous) // Check if there is a node before the node to be removed
         {
-            previous->m_next = current->m_next;
-            delete current;
+            previous->m_next = current->m_next;  // Update the next pointer of the previous node to skip the node being removed
+            delete current;                      // Delete the node to be removed
         }
     }
     else
     {
         std::cout << "In erase\nIndex is out of bounds" << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if given position is invalid
     }
 }
 
+//---------------------------__Forward_list__front__---------------------------------//
 template <class T>
-T my::Forward_list<T>::front() const
+T my::Forward_list<T>::front() const // Get the value of the first node in the list
 {
-    if (!m_head)
+    if (!m_head) // Check if the list is empty
     {
         std::cout << "List is empty!!!\nCannot front()." << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if the list is emp
     }
 
-    return m_head->m_val;
+    return m_head->m_val; // Return the value of the first node
 }
 
+//---------------------------__Forward_list__back__---------------------------------//
 template <class T>
-T my::Forward_list<T>::back() const
+T my::Forward_list<T>::back() const // Get the value of the last node in the list
 {
-    if (!m_head)
+    if (!m_head) // Check if the list is empty
     {
         std::cout << "List is empty!!!\nCannot back()." << std::endl;
-        exit(0);
+        exit(0); // Print an error message and exit the program if the list is empty
     }
 
-    Node* current = m_head;
-
-    if (!m_head->m_next)
+    if (!m_head->m_next) // If there is only one node in the list, return its value
     {
         return m_head->m_val;
     }
+    
+    Node* current = m_head; // create temprary node for traversing 
 
-    while (current->m_next->m_next)
+    while (current->m_next->m_next) // Traverse the list to find the last node
     {
         current = current->m_next;
     }
 
-    return current->m_next->m_val;
+    return current->m_next->m_val; // Return the value of the last node
 }
 
+//---------------------------__Forward_list__empty__---------------------------------//
 template <class T>
-bool my::Forward_list<T>::empty() const
+bool my::Forward_list<T>::empty() const // Check if the linked list is empty 
 {
-    return !(m_head);
+    return !(m_head); // Return true if m_head is nullptr, otherwise, return false
 }
 
+//---------------------------__Forward_list__size__---------------------------------//
 template <class T>
 size_t my::Forward_list<T>::size() const
 {
